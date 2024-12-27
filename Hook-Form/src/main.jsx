@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Form from './Form';
+import Form from './components/Form';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
