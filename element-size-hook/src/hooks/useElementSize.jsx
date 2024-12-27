@@ -15,7 +15,7 @@ export function useElementSize(ref) {
 
     updateSize(); // Ініціалізація
 
-    window.addEventListener('resize', updateSize); // Слідкуємо за змінами розмірів вікна
+    window.addEventListener('resize', updateSize); // Слідкує за змінами розмірів вікна
     return () => window.removeEventListener('resize', updateSize); // Очищення
   }, [ref]);
 
