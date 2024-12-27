@@ -2,9 +2,11 @@ import React from 'react';
 
 const TimelineEvent = ({ event, onSelect }) => {
   return (
-    <li className="timeline-event" onClick={() => onSelect(event)}>
-      <strong>{event.title}</strong> - {event.date}
-    </li>
+    <div className="timeline-event" onClick={() => onSelect(event)}>
+      <div className="circle"></div>
+      <p>{event.date}</p>
+      <p>{event.title}</p>
+    </div>
   );
 };
 

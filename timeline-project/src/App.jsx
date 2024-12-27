@@ -10,15 +10,15 @@ const App = () => {
       id: 1,
       title: 'Плавання Христофора Колумба',
       date: '1492',
-      description: 'Христофор Колумб відкрив Америку, досягнувши берегів Багамських островів, хоча вважав, що дістався Індії.',
+      description: 'Христофор Колумб відкрив Америку...',
     },
     {
       id: 2,
       title: 'Відкриття Васко да Гами морського шляху до Індії',
       date: '1498',
-      description: 'Португальський мореплавець Васко да Гама обігнув мис Доброї Надії та дістався Індії, відкривши морський шлях із Європи.',
+      description: 'Васко да Гама дістався Індії...',
     },
-    {
+     {
       id: 3,
       title: 'Перша навколосвітня подорож',
       date: '1519-1522',
@@ -40,8 +40,9 @@ const App = () => {
 
   return (
     <div>
+      <h1>Таймлайн Історичних Подій</h1>
       <Timeline events={events} onSelectEvent={setSelectedEvent} />
-      <SelectedEvent event={selectedEvent} />
+      {selectedEvent && <SelectedEvent event={selectedEvent} />}
     </div>
   );
 };
