@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import FavoriteTech from './FavoriteTech';
 import LearnTechCheckboxes from './LearnTechCheckboxes';
+import TechLevelMatrix from './TechLevelMatrix';
 import './Form.css';
 
 // Схема валідації
@@ -20,6 +21,11 @@ const schema = yup.object().shape({
     is: (val) => val?.includes('Other'),
     then: yup.string().required('Please specify your tech'),
   }),
+  techLevels: yup
+    .object()
+    .test('one-answer-per-row', 'Please select one level per technology', (obj) =>
+      obj && Object.keys(obj).every((key) => !!obj[key])
+    ),
 });
 
 const Form = () => {
@@ -76,6 +82,19 @@ const Form = () => {
             { value: 'SAP Fiori', label: 'SAP Fiori' },
             { value: 'React Native', label: 'React Native' },
             { value: 'Flutter', label: 'Flutter' },
+          ]}
+        />
+
+        {/* Матриця рівнів */}
+        <TechLevelMatrix
+          name="techLevels"
+          techOptions={[
+            'JS', 'TS', 'React', 'Vue', 'Angular', 'NodeJS',
+            'GraphQL', 'Wordpress', 'Drupal', 'Python', 'REST',
+            'React Native', 'Flutter',
+          ]}
+          levels={[
+            'Not relevant', 'Trainee', 'Junior', 'Middle', 'Senior', 'Expert',
           ]}
         />
 
