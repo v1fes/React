@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SelectedEvent = ({ event }) => {
-  if (!event) return <p>Please select an event to view details.</p>;
+  if (!event) return <p>Оберіть подію для перегляду деталей.</p>;
 
   return (
     <div className="selected-event">

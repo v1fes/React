@@ -23,6 +23,15 @@
     background-color: #ff4343;
 }
 
+.timeline-event.active .circle {
+    background-color: #ff9800;
+}
+
+.timeline-event.active p {
+    font-weight: bold;
+    color: #ff9800;
+}
+
 .timeline::before {
     content: '';
     position: absolute;
