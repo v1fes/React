@@ -87,3 +87,15 @@ button:hover {
   margin-top: 5px;
   display: block;
 }
+
+textarea {
+  resize: none;
+  width: 300px;
+  height: 100px;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}

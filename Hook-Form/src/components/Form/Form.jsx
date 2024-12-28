@@ -6,6 +6,7 @@ import FavoriteTech from '../FavoriteTech/FavoriteTech';
 import LearnTechCheckboxes from '../LearnTechCheckboxes/LearnTechCheckboxes';
 import TechLevelMatrix from '../TechLevelMatrix/TechLevelMatrix';
 import AdditionalCheckboxes from '../AdditionalCheckboxes/AdditionalCheckboxes';
+import TextAreaBlock from '../TextAreaBlock/TextAreaBlock';
 import './Form.module.css';
 
 // Схема валідації
@@ -19,7 +20,7 @@ otherTech: yup.string().when('favoriteTech', {
 }),
   learnTech: yup.array().min(1, 'Please select at least one tech'),
   learnTechOther: yup.string().when('learnTech', {
-    is: (val) => val?.includes('Other'),
+    is: (val) => Array.isArray(val) && val.includes('Other'),
     then: yup.string().required('Please specify your tech'),
   }),
   techLevels: yup.object().test(
@@ -27,17 +28,24 @@ otherTech: yup.string().when('favoriteTech', {
     'Please select one level per technology',
     (obj) => obj && Object.keys(obj).every((key) => !!obj[key])
   ),
-  additionalOptions: yup.array().min(1, 'Please select at least one option'),
-  
+ additionalOptions: yup
+    .array()
+    .of(yup.string())
+    .min(1, 'Please select at least one additional option'),  
 });
 
 const Form = () => {
   const methods = useForm({
     resolver: yupResolver(schema),
+    defaultValues: {
+      learnTech: [],
+      additionalOptions: [],
+    },
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    console.log('Form Data:', data);
+  console.log('Errors:', methods.formState.errors);
   };
 
   return (
@@ -116,6 +124,22 @@ const Form = () => {
        
           ]}
         />
+          {/* Поля тексту */}
+          <TextAreaBlock
+            name="goal1"
+            label="#1 My goals on next time"
+            placeholder="Your answer"
+          />
+          <TextAreaBlock
+            name="goal2"
+            label="#2 My goals on next time"
+            placeholder="Your answer"
+          />
+          <TextAreaBlock
+            name="goal3"
+            label="#3 My goals on next time"
+            placeholder="Your answer"
+          />
 
         <button type="submit">Submit</button>
       </form>
