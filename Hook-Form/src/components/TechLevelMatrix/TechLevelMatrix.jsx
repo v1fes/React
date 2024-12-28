@@ -7,25 +7,25 @@ const TechLevelMatrix = ({ name, techOptions, levels }) => {
   return (
     <div>
       <label>My current level on tech *</label>
-      <table className="tech-level-matrix">
+      <table>
         <thead>
           <tr>
             <th>Technology</th>
-            {levels.map((level, index) => (
-              <th key={index}>{level}</th>
+            {levels.map((level) => (
+              <th key={level}>{level}</th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {techOptions.map((tech, techIndex) => (
-            <tr key={techIndex}>
+          {techOptions.map((tech) => (
+            <tr key={tech}>
               <td>{tech}</td>
-              {levels.map((level, levelIndex) => (
-                <td key={levelIndex}>
+              {levels.map((level) => (
+                <td key={level}>
                   <input
                     type="radio"
                     value={level}
-                    {...register(`${name}.${tech}`)}
+                    {...register(`${name}.${tech}`, { required: 'Select a level for all techs' })}
                   />
                 </td>
               ))}
@@ -33,9 +33,7 @@ const TechLevelMatrix = ({ name, techOptions, levels }) => {
           ))}
         </tbody>
       </table>
-      {errors[name] && (
-        <p className="validation-error">{errors[name]?.message}</p>
-      )}
+      {errors[name] && <p>{errors[name].message}</p>}
     </div>
   );
 };

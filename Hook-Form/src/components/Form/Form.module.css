@@ -1,18 +1,19 @@
 form {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: visible;
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: visible;
 }
 
 form div,
 form table {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
+
 label {
   display: block;
   font-weight: bold;
@@ -27,7 +28,8 @@ input[type="submit"] {
 }
 
 input[type="text"] {
-  width: 100%; /* Поля вводу займають повну ширину форми */
+  width: 100%;
+  /* Поля вводу займають повну ширину форми */
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -58,30 +60,30 @@ button:hover {
 }
 
 .tech-level-matrix {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
 }
 
 .tech-level-matrix th,
 .tech-level-matrix td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
 }
 
 .tech-level-matrix th {
-    background-color: #f5f5f5;
-    font-weight: bold;
+  background-color: #f5f5f5;
+  font-weight: bold;
 }
 
 .tech-level-matrix input[type="radio"] {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .validation-error {
-    color: red;
-    font-size: 0.875rem;
-    margin-top: 5px;
-    display: block;
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 5px;
+  display: block;
 }

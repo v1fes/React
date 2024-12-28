@@ -2,30 +2,33 @@ import React from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import FavoriteTech from './FavoriteTech';
-import LearnTechCheckboxes from './LearnTechCheckboxes';
-import TechLevelMatrix from './TechLevelMatrix';
-import './Form.css';
+import FavoriteTech from '../FavoriteTech/FavoriteTech';
+import LearnTechCheckboxes from '../LearnTechCheckboxes/LearnTechCheckboxes';
+import TechLevelMatrix from '../TechLevelMatrix/TechLevelMatrix';
+import AdditionalCheckboxes from '../AdditionalCheckboxes/AdditionalCheckboxes';
+import './Form.module.css';
 
 // Схема валідації
 const schema = yup.object().shape({
   nameSurname: yup.string().required('Name, Surname is required'),
   team: yup.string().required('Your team is required'),
   favoriteTech: yup.string().required('Please select your favorite tech'),
-  otherTech: yup.string().when('favoriteTech', {
-    is: 'Other',
-    then: yup.string().required('Please specify your tech'),
-  }),
+otherTech: yup.string().when('favoriteTech', {
+  is: 'Other',
+  then: yup.string().required('Please specify your tech'),
+}),
   learnTech: yup.array().min(1, 'Please select at least one tech'),
   learnTechOther: yup.string().when('learnTech', {
     is: (val) => val?.includes('Other'),
     then: yup.string().required('Please specify your tech'),
   }),
-  techLevels: yup
-    .object()
-    .test('one-answer-per-row', 'Please select one level per technology', (obj) =>
-      obj && Object.keys(obj).every((key) => !!obj[key])
-    ),
+  techLevels: yup.object().test(
+    'one-answer-per-row',
+    'Please select one level per technology',
+    (obj) => obj && Object.keys(obj).every((key) => !!obj[key])
+  ),
+  additionalOptions: yup.array().min(1, 'Please select at least one option'),
+  
 });
 
 const Form = () => {
@@ -95,6 +98,22 @@ const Form = () => {
           ]}
           levels={[
             'Not relevant', 'Trainee', 'Junior', 'Middle', 'Senior', 'Expert',
+          ]}
+        />
+
+        {/* Додатковий блок з чекбоксами */}
+        <AdditionalCheckboxes
+          name="additionalOptions"
+          options={[
+            { value: 'Option1', label: 'develop presentations' },
+            { value: 'Option2', label: 'develop DX8' },
+            { value: 'Option3', label: 'develop complex app' },
+            { value: 'Option4', label: 'develop hybrid react-native' },
+            { value: 'Option5', label: 'develop internal small project' },
+            { value: 'Option6', label: 'develop pet-projects' },
+            { value: 'Option7', label: 'research for frontend competence center' },
+        
+       
           ]}
         />
 
