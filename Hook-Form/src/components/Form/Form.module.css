@@ -94,8 +94,38 @@ textarea {
   height: 100px;
 }
 
+.checkbox-group {
+  margin-bottom: 15px;
+}
+
+.checkbox-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.checkbox-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.checkbox-item {
+  margin-right: 10px;
+}
+
+.checkbox-other {
+  margin-top: 10px;
+}
+
+.checkbox-other-input {
+  margin-top: 5px;
+  padding: 5px;
+  width: 100%;
+}
+
 .error-message {
   color: red;
-  font-size: 14px;
+  font-size: 0.875rem;
   margin-top: 5px;
 }

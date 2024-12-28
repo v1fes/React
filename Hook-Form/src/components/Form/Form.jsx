@@ -3,13 +3,10 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import FavoriteTech from '../FavoriteTech/FavoriteTech';
-import LearnTechCheckboxes from '../LearnTechCheckboxes/LearnTechCheckboxes';
 import TechLevelMatrix from '../TechLevelMatrix/TechLevelMatrix';
 import TextAreaBlock from '../TextAreaBlock/TextAreaBlock';
 import YesNoQuestion from '../YesNoQuestion/YesNoQuestion';
-import AdditionalCheckboxes from '../AdditionalCheckboxes/AdditionalCheckboxes';
-import AdditionalCheckboxes2 from '../AdditionalCheckboxes/AdditionalCheckboxes2';
-
+import UniversalCheckboxes from '../UniversalCheckboxes/UniversalCheckboxes';
 import './Form.module.css';
 
 // Схема валідації
@@ -96,8 +93,9 @@ const Form = () => {
         <FavoriteTech name="favoriteTech" />
 
         {/* Компонент для чекбоксів */}
-        <LearnTechCheckboxes
+       <UniversalCheckboxes
           name="learnTech"
+          label="I want to learn tech"
           options={[
             { value: 'JS', label: 'JS' },
             { value: 'TS', label: 'TS' },
@@ -109,7 +107,9 @@ const Form = () => {
             { value: 'React Native', label: 'React Native' },
             { value: 'Flutter', label: 'Flutter' },
           ]}
-        />
+          placeholder="Specify your tech"
+/>
+
 
         {/* Матриця рівнів */}
         <TechLevelMatrix
@@ -125,8 +125,9 @@ const Form = () => {
         />
 
         {/* Додатковий блок з чекбоксами */}
-        <AdditionalCheckboxes
+        <UniversalCheckboxes
           name="additionalOptions"
+          label="I'm interested to"
           options={[
             { value: 'Option1', label: 'develop presentations' },
             { value: 'Option2', label: 'develop DX8' },
@@ -168,8 +169,9 @@ const Form = () => {
             register={methods.register}
             error={methods.formState.errors.question2}
         />
-          <AdditionalCheckboxes2
-          name="additionalOptions2"
+          <UniversalCheckboxes
+          name="additionalOptions"
+          label="My topic in FCC"
           options={[
             { value: 'Option11', label: 'Global technology overview' },
             { value: 'Option12', label: 'Analytic and architecture topics' },
