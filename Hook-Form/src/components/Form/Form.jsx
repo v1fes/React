@@ -5,8 +5,11 @@ import * as yup from 'yup';
 import FavoriteTech from '../FavoriteTech/FavoriteTech';
 import LearnTechCheckboxes from '../LearnTechCheckboxes/LearnTechCheckboxes';
 import TechLevelMatrix from '../TechLevelMatrix/TechLevelMatrix';
-import AdditionalCheckboxes from '../AdditionalCheckboxes/AdditionalCheckboxes';
 import TextAreaBlock from '../TextAreaBlock/TextAreaBlock';
+import YesNoQuestion from '../YesNoQuestion/YesNoQuestion';
+import AdditionalCheckboxes from '../AdditionalCheckboxes/AdditionalCheckboxes';
+import AdditionalCheckboxes2 from '../AdditionalCheckboxes/AdditionalCheckboxes2';
+
 import './Form.module.css';
 
 // Схема валідації
@@ -14,6 +17,8 @@ const schema = yup.object().shape({
   nameSurname: yup.string().required('Name, Surname is required'),
   team: yup.string().required('Your team is required'),
   favoriteTech: yup.string().required('Please select your favorite tech'),
+  question1: yup.string().required('This field is required'),
+  question2: yup.string().required('This field is required'),
 otherTech: yup.string().when('favoriteTech', {
   is: 'Other',
   then: yup.string().required('Please specify your tech'),
@@ -32,6 +37,11 @@ otherTech: yup.string().when('favoriteTech', {
     .array()
     .of(yup.string())
     .min(1, 'Please select at least one additional option'),  
+ additionalOptions2: yup
+    .array()
+    .of(yup.string())
+    .min(1, 'Please select at least one additional option'),  
+
 });
 
 const Form = () => {
@@ -40,6 +50,9 @@ const Form = () => {
     defaultValues: {
       learnTech: [],
       additionalOptions: [],
+      additionalOptions2: [],
+      question1: '',
+      question2: '',
     },
   });
 
@@ -140,7 +153,30 @@ const Form = () => {
             label="#3 My goals on next time"
             placeholder="Your answer"
           />
-
+            {/* Інші поля форми */}
+          <YesNoQuestion
+            name="question1"
+            label="Question 1"
+            register={methods.register}
+            error={methods.formState.errors.question1}
+          />
+          <YesNoQuestion
+            name="question2"
+            label="Question 2"
+            register={methods.register}
+            error={methods.formState.errors.question2}
+        />
+          <AdditionalCheckboxes2
+          name="additionalOptions2"
+          options={[
+            { value: 'Option11', label: 'Global technology overview' },
+            { value: 'Option12', label: 'Analytic and architecture topics' },
+            { value: 'Option13', label: 'Technology battle' },
+            { value: 'Option14', label: 'Anthill edetailer (internal stuff)' },
+            { value: 'Option15', label: 'Anthill DX8 (internal stuff)' },
+            { value: 'Option16', label: 'Pet projects discussions and showing' }, 
+          ]}
+        />
         <button type="submit">Submit</button>
       </form>
     </FormProvider>

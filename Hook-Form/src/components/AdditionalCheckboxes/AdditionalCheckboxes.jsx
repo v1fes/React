@@ -7,7 +7,7 @@ const AdditionalCheckboxes = ({ name, options }) => {
 
   return (
     <div>
-      <label>Additional options *</label>
+      <label>I'm interested to*</label>
       <div>
         {options.map((option) => (
           <div key={option.value}>
