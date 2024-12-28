@@ -19,6 +19,7 @@ const schema = yup.object().shape({
   favoriteTech: yup.string().required('Please select your favorite tech'),
   question1: yup.string().required('This field is required'),
   question2: yup.string().required('This field is required'),
+  question3: yup.string().required('This field is required'),
 otherTech: yup.string().when('favoriteTech', {
   is: 'Other',
   then: yup.string().required('Please specify your tech'),
@@ -53,6 +54,7 @@ const Form = () => {
       additionalOptions2: [],
       question1: '',
       question2: '',
+      question3: '',
     },
   });
 
@@ -156,13 +158,13 @@ const Form = () => {
             {/* Інші поля форми */}
           <YesNoQuestion
             name="question1"
-            label="Question 1"
+            label="I want to work on new PreSales. MVP, POC or new projects "
             register={methods.register}
             error={methods.formState.errors.question1}
           />
           <YesNoQuestion
             name="question2"
-            label="Question 2"
+            label="I want to speak on FCC meetup or other meetups "
             register={methods.register}
             error={methods.formState.errors.question2}
         />
@@ -177,6 +179,17 @@ const Form = () => {
             { value: 'Option16', label: 'Pet projects discussions and showing' }, 
           ]}
         />
+        <YesNoQuestion
+            name="question3"
+            label="I want to visit FCC meetup"
+            register={methods.register}
+          error={methods.formState.errors.question3}
+        />
+        <TextAreaBlock
+            name="goal4"
+            label="My idea of how to improve our work"
+            placeholder="Your answer"
+          />
         <button type="submit">Submit</button>
       </form>
     </FormProvider>
